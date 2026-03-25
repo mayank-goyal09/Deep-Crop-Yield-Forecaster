@@ -215,3 +215,111 @@ def predict_with_confidence(model, history_df, n_simulations=30):
         "confidence": conf_level,
     }
 
+def calculate_all_predictions(model, df, target_date):
+    """Calculate predictions for all ROIs with confidence intervals."""
+    results = {}
+    for roi_id in ROI_LOCATIONS:
+        history = df[(df['roi_id'] == roi_id) & (df['date'] <= target_date)].sort_values('date').tail(4)
+        if len(history) < 4:
+            results[roi_id] = None
+        else:
+            results[roi_id] = predict_with_confidence(model, history)
+    return results
+
+
+def calculate_temporal_predictions(model, df, roi_id):
+    """Calculate predictions over ALL dates for a given ROI — for the interactive chart."""
+    roi_df = df[df['roi_id'] == roi_id].sort_values('date')
+    dates = roi_df['date'].unique()
+    pred_records = []
+    
+    for d in dates:
+        hist = roi_df[roi_df['date'] <= d].tail(4)
+        if len(hist) < 4:
+            continue
+        inputs = hist[['ndvi', 'rainfall']].values.reshape(1, 4, 2)
+        pred = float(model.predict(inputs, verbose=0)[0][0])
+        
+        # Quick CI with fewer simulations for speed
+        preds = []
+        for _ in range(10):
+            noise = np.random.normal(0, 0.02, inputs.shape)
+            preds.append(float(model.predict(inputs + noise, verbose=0)[0][0]))
+        preds.append(pred)
+        arr = np.array(preds)
+        
+        pred_records.append({
+            'date': d,
+            'yield_pred': np.mean(arr),
+            'yield_upper': np.mean(arr) + 1.96 * np.std(arr),
+            'yield_lower': max(0, np.mean(arr) - 1.96 * np.std(arr)),
+            'ndvi': hist['ndvi'].iloc[-1],
+            'rainfall': hist['rainfall'].iloc[-1],
+        })
+    return pd.DataFrame(pred_records)
+
+
+# ===========================
+#  PLOTLY CHART BUILDERS
+# ===========================
+PLOTLY_LAYOUT = dict(
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    font=dict(family='Inter, sans-serif', color='#8b949e', size=12),
+    margin=dict(l=40, r=20, t=50, b=40),
+    hovermode='x unified',
+    legend=dict(bgcolor='rgba(0,0,0,0)', font=dict(size=11)),
+    xaxis=dict(gridcolor='rgba(46,204,113,0.08)', linecolor='rgba(46,204,113,0.15)',
+               zeroline=False, showgrid=True),
+    yaxis=dict(gridcolor='rgba(46,204,113,0.08)', linecolor='rgba(46,204,113,0.15)',
+               zeroline=False, showgrid=True),
+)
+
+
+def build_ndvi_yield_chart(temporal_df, region_name, region_color):
+    """Dual-axis interactive Plotly chart: NDVI trend + Predicted Yield with CI band."""
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    
+    # Confidence band for yield
+    fig.add_trace(go.Scatter(
+        x=temporal_df['date'], y=temporal_df['yield_upper'],
+        mode='lines', line=dict(width=0), showlegend=False,
+        hoverinfo='skip',
+    ), secondary_y=True)
+    fig.add_trace(go.Scatter(
+        x=temporal_df['date'], y=temporal_df['yield_lower'],
+        mode='lines', line=dict(width=0), fill='tonexty',
+        fillcolor='rgba(46,204,113,0.1)', name='95% CI', showlegend=True,
+        hoverinfo='skip',
+    ), secondary_y=True)
+    
+    # NDVI line
+    fig.add_trace(go.Scatter(
+        x=temporal_df['date'], y=temporal_df['ndvi'],
+        mode='lines+markers', name='NDVI Index',
+        line=dict(color='#1abc9c', width=2.5, shape='spline'),
+        marker=dict(size=5, color='#1abc9c', line=dict(color='#0a0e14', width=1.5)),
+        hovertemplate='<b>NDVI</b>: %{y:.4f}<extra></extra>',
+    ), secondary_y=False)
+    
+    # Yield prediction line
+    fig.add_trace(go.Scatter(
+        x=temporal_df['date'], y=temporal_df['yield_pred'],
+        mode='lines+markers', name='Yield Forecast (MT/Ha)',
+        line=dict(color=region_color, width=3, shape='spline'),
+        marker=dict(size=6, symbol='diamond', color=region_color,
+                    line=dict(color='#0a0e14', width=1.5)),
+        hovertemplate='<b>Yield</b>: %{y:.3f} MT/Ha<extra></extra>',
+    ), secondary_y=True)
+    
+    fig.update_layout(
+        **PLOTLY_LAYOUT,
+        title=dict(text=f'Temporal Trends — {region_name}', font=dict(size=16, color='#e0e0e0')),
+        height=380,
+    )
+    fig.update_yaxes(title_text='NDVI Index', secondary_y=False,
+                     title_font=dict(color='#1abc9c'), tickfont=dict(color='#1abc9c'))
+    fig.update_yaxes(title_text='Yield (MT/Ha)', secondary_y=True,
+                     title_font=dict(color=region_color), tickfont=dict(color=region_color))
+    return fig
+
