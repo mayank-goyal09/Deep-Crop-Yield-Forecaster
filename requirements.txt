@@ -5,4 +5,5 @@ tensorflow
 folium
 streamlit-folium
 matplotlib
-datetime
+plotly
+scipy
