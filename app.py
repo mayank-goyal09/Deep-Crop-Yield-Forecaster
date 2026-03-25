@@ -11,7 +11,6 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import os
 
-
 # --- PAGE CONFIG ---
 st.set_page_config(
     page_title="🌾 Delhi/NCR Yield Forecast",
@@ -143,6 +142,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+
 # ===========================
 #  CACHED RESOURCES
 # ===========================
@@ -214,6 +214,7 @@ def predict_with_confidence(model, history_df, n_simulations=30):
         "ci_upper": round(ci_upper, 3),
         "confidence": conf_level,
     }
+
 
 def calculate_all_predictions(model, df, target_date):
     """Calculate predictions for all ROIs with confidence intervals."""
@@ -322,6 +323,7 @@ def build_ndvi_yield_chart(temporal_df, region_name, region_color):
     fig.update_yaxes(title_text='Yield (MT/Ha)', secondary_y=True,
                      title_font=dict(color=region_color), tickfont=dict(color=region_color))
     return fig
+
 
 def build_rainfall_chart(temporal_df, region_name):
     """Interactive bar chart for rainfall."""
@@ -794,4 +796,3 @@ st.markdown("""
     <span style='font-size: 0.75rem; color: #30363d;'>© 2025 Agricultural Intelligence Hub</span>
 </div>
 """, unsafe_allow_html=True)
-
