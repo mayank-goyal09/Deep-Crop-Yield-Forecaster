@@ -143,3 +143,75 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# ===========================
+#  CACHED RESOURCES
+# ===========================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+@st.cache_resource
+def load_model():
+    model_path = os.path.join(BASE_DIR, 'crop_yield_lstm_model.h5')
+    return tf.keras.models.load_model(model_path)
+
+@st.cache_data
+def load_csv_data():
+    csv_path = os.path.join(BASE_DIR, 'crop_yield_data_multi_roi.csv')
+    df = pd.read_csv(csv_path)
+    df['date'] = pd.to_datetime(df['date'])
+    return df
+
+# Region metadata
+ROI_LOCATIONS = {
+    0: {"name": "Central Delhi", "lat": 28.6139, "lon": 77.2090, "color": "#2ecc71", "emoji": "🏛️"},
+    1: {"name": "Gurugram",      "lat": 28.4595, "lon": 77.0266, "color": "#3498db", "emoji": "🏙️"},
+    2: {"name": "Noida",         "lat": 28.5355, "lon": 77.3910, "color": "#e67e22", "emoji": "🌆"},
+    3: {"name": "Ghaziabad",     "lat": 28.6692, "lon": 77.4538, "color": "#9b59b6", "emoji": "🏘️"},
+    4: {"name": "Faridabad",     "lat": 28.4089, "lon": 77.3178, "color": "#e74c3c", "emoji": "🏗️"},
+}
+
+# ===========================
+#  PREDICTION ENGINE (with Confidence Intervals)
+# ===========================
+def predict_with_confidence(model, history_df, n_simulations=30):
+    """
+    Run Monte Carlo Dropout (approximation) to get prediction + uncertainty.
+    Since our LSTM might not have dropout at inference, we simulate noise to
+    estimate confidence intervals around the prediction.
+    """
+    inputs = history_df[['ndvi', 'rainfall']].values.reshape(1, 4, 2)
+    
+    # Base prediction
+    base_pred = float(model.predict(inputs, verbose=0)[0][0])
+    
+    # Monte Carlo simulation: add small perturbations to inputs
+    predictions = []
+    for _ in range(n_simulations):
+        noise = np.random.normal(0, 0.02, inputs.shape)
+        noisy_input = inputs + noise
+        p = float(model.predict(noisy_input, verbose=0)[0][0])
+        predictions.append(p)
+    
+    predictions.append(base_pred)
+    pred_array = np.array(predictions)
+    
+    mean_pred = np.mean(pred_array)
+    std_pred = np.std(pred_array)
+    ci_lower = mean_pred - 1.96 * std_pred
+    ci_upper = mean_pred + 1.96 * std_pred
+    
+    # Confidence level based on std
+    if std_pred < 0.15:
+        conf_level = "HIGH"
+    elif std_pred < 0.35:
+        conf_level = "MEDIUM"
+    else:
+        conf_level = "LOW"
+    
+    return {
+        "prediction": round(mean_pred, 3),
+        "std": round(std_pred, 3),
+        "ci_lower": round(max(0, ci_lower), 3),
+        "ci_upper": round(ci_upper, 3),
+        "confidence": conf_level,
+    }
+
