@@ -62,3 +62,36 @@ The final result is a production-ready **Streamlit dashboard** that provides rea
 </table>
 
 ---
+
+## 🌍 **REGIONS IN FOCUS (DELHI/NCR)**
+
+<div align="center">
+
+| 🏛️ **Central Delhi** | 🏙️ **Gurugram** | 🌆 **Noida** | 🏘️ **Ghaziabad** | 🏗️ **Faridabad** |
+|:---:|:---:|:---:|:---:|:---:|
+| Urban agriculture | Peri-urban farming | Mixed use | Agricultural belt | Industrial + agriculture |
+
+</div>
+
+---
+
+## 🛠️ **TECHNOLOGY STACK**
+
+<div align="center">
+
+![Tech Stack](https://skillicons.dev/icons?i=python,tensorflow,github,vscode)
+
+</div>
+
+| **Category** | **Technologies** | **Purpose** |
+|:------------:|:-----------------|:------------|
+| 🐍 **Core Language** | Python 3.8+ | Primary development language |
+| 🧠 **Deep Learning** | TensorFlow / Keras | Stacked LSTM model architecture |
+| 🛰️ **Geospatial & Remote Sensing**| Google Earth Engine (EE) API | Cloud-based satellite data extraction |
+| 📊 **Data Science** | Pandas, NumPy | Data manipulation, sequence engineering |
+| 🎨 **Frontend** | Streamlit | Interactive web application |
+| 📈 **Visualization** | Plotly, Folium | Dynamic charts, Interactive NDVI heatmaps |
+| ⛅ **Environmental Data** | Sentinel-2 (Level-2A), CHIRPS | Open-source satellite & rainfall data |
+
+---
+
