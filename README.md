@@ -157,3 +157,60 @@ A production-ready interface that includes:
 </table>
 
 ---
+
+## 🎨 **DASHBOARD EXPERIENCE**
+
+<div align="center">
+
+### ✨ **Premium UI with Glassmorphism Design & Interactive Data**
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🗺️ **Dynamic Maps & Geolocation**
+- **S2 NDVI Heatmap** dynamically responds to week-by-week slider shifts.
+- Detailed Folium location markers reveal predictions with **Monte Carlo confidence margins** per selected district in real-time.
+
+</td>
+<td width="50%">
+
+#### 📊 **In-depth Time-Series Analysis**
+- **Dual-Axis Line Charts** tracking vegetation health (NDVI index) alongside the predicted output in metric tons per hectare.
+- **Micro-Metric Drill-downs** showing precise rainfall distribution for correlations.
+
+</td>
+</tr>
+</table>
+
+### **🎯 Design Highlights:**
+
+```
+✨ Dark mode aesthetic optimized for data density
+✨ Animated glassmorphism metric cards showing confidence stats
+✨ Cross-Region comparison bar-plots
+✨ Explainable AI features — embedded details about mathematical NDVI equations 
+✨ Seamless user interaction flow prioritizing high-tech UX
+```
+
+---
+
+## 📂 **PROJECT STRUCTURE**
+
+```
+🌾 Deep-Crop-Yield-Forecaster/
+│
+├── 📊 app.py                              # Main Streamlit dashboard application
+├── ⚙️ check_model.py                      # Basic script for checking architecture
+│
+├── 🗂️ Data & Models
+│   ├── crop_yield_data_multi_roi.csv      # Processed historical 4-week window data
+│   ├── crop_yield_lstm_model.h5           # Our trained core DL model Checkpoint
+│
+├── 📦 requirements.txt                    # Python environment dependencies
+└── 📖 README.md                           # You are here! 🎉
+```
+
+---
