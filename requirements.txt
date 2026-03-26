@@ -1,9 +1,9 @@
-streamlit
+streamlit>=1.30.0
 pandas
-numpy
-tensorflow
+numpy<2.0.0
+tensorflow==2.15.0
 folium
 streamlit-folium
-matplotlib
 plotly
 scipy
+matplotlib
