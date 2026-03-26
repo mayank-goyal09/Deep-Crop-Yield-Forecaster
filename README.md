@@ -289,3 +289,89 @@ Unfurl the "🏗️ Under the Hood" dropdowns at the bottom of the dashboard to 
 </table>
 
 ---
+
+## 📚 **SKILLS DEMONSTRATED**
+
+<div align="center">
+
+### **A Portfolio-Ready Deep Learning & Geospatial Project**
+
+</div>
+
+| **Category** | **Skills** |
+|:-------------|:-----------|
+| 🧠 **Deep Learning** | Sequence learning via Stacked LSTMs, Monte Carlo Dropout |
+| 🛰️ **Geospatial AI** | Google Earth Engine API, Sentinel-2 spectral composites |
+| 📊 **Time-Series Analysis** | Multi-dimensional 3D tensors, Temporal Sliding windows |
+| 🐍 **Python Development** | Optimized architecture pipeline execution |
+| 🎨 **UI/UX Design** | Premium application building with complex Streamlit rendering |
+| 📈 **Data Visualization** | Geocoding with Folium Maps & dynamic interactions using Plotly |
+| 📐 **Model Evaluation** | Rigorous loss optimization down to an incredible 0.05 index |
+
+---
+
+## 🔮 **FUTURE ENHANCEMENTS**
+
+- [ ] 🌍 Broaden ROI mapping to include agricultural powerhouses (Punjab/Haryana)
+- [ ] 🛰️ Merge SAR (Synthetic Aperture Radar / Sentinel-1) data for cloud-penetrating capability
+- [ ] 🤖 Expand deep learning architecture with Spatio-Temporal Transformers
+- [ ] 🔄 Live Earth Engine API ingestion rather than static CSV backups
+- [ ] 📱 Progressive Web App (PWA) development
+- [ ] 🌾 Multi-crop segmentation targeting local staples beyond standard indices
+
+---
+
+## 🤝 **CONTRIBUTING**
+
+Contributions are **always welcome**! 🎉
+
+1. 🍴 Fork the Project
+2. 🌱 Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. 💾 Commit your Changes (`git commit -m 'Add AmazingFeature'`)
+4. 📤 Push to the Branch (`git push origin feature/AmazingFeature`)
+5. 🎁 Open a Pull Request
+
+---
+
+## 📝 **LICENSE**
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+---
+
+## 👨‍💻 **CONNECT WITH ME**
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-mayank--goyal09-181717?style=for-the-badge&logo=github)](https://github.com/mayank-goyal09)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Mayank_Goyal-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/mayank-goyal-4b8756363/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit_Site-4facfe?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mayank-portfolio-delta.vercel.app/)
+[![Email](https://img.shields.io/badge/Email-itsmaygal09@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:itsmaygal09@gmail.com)
+
+<br/>
+
+**Mayank Goyal**  
+📊 Data Analyst | 🧠 Deep Learning Enthusiast | 🐍 Python Developer  
+💼 Data Analyst Intern @ SpacECE Foundation India
+
+</div>
+
+---
+
+## ⭐ **SHOW YOUR SUPPORT**
+
+<div align="center">
+
+Give a ⭐️ if this project helped you understand Geospatial Deep Learning models and inspired your agricultural forecasting projects!
+
+<br/>
+
+### 🌾 **Built with Deep Learning & ❤️ by Mayank Goyal**
+
+*"Predicting tomorrow's yield, one Stacked LSTM layer at a time!"* 🧠🛰️
+
+<br/>
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=0:2ecc71,100:1abc9c&height=120&section=footer)
+
+</div>
