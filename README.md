@@ -18,3 +18,47 @@
 [![GitHub Forks](https://img.shields.io/github/forks/mayank-goyal09/Deep-Crop-Yield-Forecaster?style=for-the-badge&color=87ceeb)](https://github.com/mayank-goyal09/Deep-Crop-Yield-Forecaster/network)
 
 <br/>
+
+### 🧠 **Harnessing Stacked LSTM to Predict Crop Yields across Delhi/NCR** 
+
+### **From Raw Sentinel-2 Satellite Imagery → Actionable Agricultural Intelligence** 🌍
+
+</div>
+
+---
+
+## ⚡ **THE PIPELINE AT A GLANCE**
+
+<table>
+<tr>
+<td width="50%">
+
+### 🎯 **What This Project Does**
+
+This end-to-end **Geospatial AI Pipeline** transforms raw, open-source **Sentinel-2 satellite imagery** into actionable agricultural intelligence through a custom-built **Stacked LSTM Deep Learning model**. 
+
+By leveraging the **Google Earth Engine (GEE)** API for cloud-based data extraction, we calculated critical vegetation indices like **NDVI** to track crop health over time. This metric is fused with meteorological data (CHIRPS precipitation) to account for environmental stress. This complex time-series data is reshaped into 3D tensors to train a neural network capable of "remembering" the cumulative growth journey of crops (like wheat), achieving a highly stable **validation loss of 0.05**.
+
+The final result is a production-ready **Streamlit dashboard** that provides real-time yield forecasts, interactive heatmaps, and historical trend analysis—offering a powerful, cost-free tool for farmers and policymakers to optimize resource allocation and predict food security risks.
+
+</td>
+<td width="50%">
+
+### ✨ **Key Highlights**
+
+| Feature | Details |
+|---------|---------|
+| 🛰️ **Data Source** | Sentinel-2 MSI (10m) & CHIRPS (5km) via GEE |
+| 🌿 **Vegetation Index** | Normalized Difference Vegetation Index (NDVI) |
+| 📅 **Input Window** | 4 weeks of historical cumulative data |
+| 🗺️ **Regions Covered** | Central Delhi, Gurugram, Noida, Ghaziabad, Faridabad |
+| 🧪 **Deep Learning** | Stacked LSTM Network with Monte Carlo Dropout |
+| 📉 **Performance** | High stability with 0.05 Validation Loss |
+| 📊 **Output** | Yield prediction (MT/Ha) with 95% Confidence Intervals |
+| 🎨 **UI Design** | Premium glassmorphism aesthetic dashboard |
+
+</td>
+</tr>
+</table>
+
+---
