@@ -214,3 +214,78 @@ A production-ready interface that includes:
 ```
 
 ---
+
+## 🚀 **QUICK START GUIDE**
+
+<div align="center">
+
+</div>
+
+### **Step 1: Clone the Repository** 📥
+
+```bash
+git clone https://github.com/mayank-goyal09/Deep-Crop-Yield-Forecaster.git
+cd Deep-Crop-Yield-Forecaster
+```
+
+### **Step 2: Create Virtual Environment** 🐍
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+### **Step 3: Install Dependencies** 📦
+
+```bash
+pip install -r requirements.txt
+```
+
+### **Step 4: Launch the Dashboard** 🎯
+
+```bash
+streamlit run app.py
+```
+
+### **Step 5: Open in Browser** 🌐
+
+Navigate to: **`http://localhost:8501`**
+
+> 🎉 **That's it!** Slide the observation dates to see historical trends, and watch the Stacked LSTM extrapolate exact yield MT figures!
+
+---
+
+## 🎮 **HOW TO USE THE APPLICATION**
+
+<table>
+<tr>
+<td>
+
+### 🔹 **1. Set Time Context**
+Use the **Observation Period** slider in the Control Panel to pick a target historical week. This feeds the previous month's data straight into the inference engine.
+
+</td>
+<td>
+
+### 🔹 **2. Evaluate Regional Data**
+View the immediate summary numbers above the map. They identify regional yields alongside estimated **Confidence Thresholds (HIGH/MED/LOW)** computed on-the-fly.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### 🔹 **3. Drill Down By Region**
+Select a specific Delhi/NCR region parameter to uncover temporal correlations. The system will plot historical weather and NDVI variations matching the yield trajectory.
+
+</td>
+<td>
+
+### 🔹 **4. Explore Architecture Context**
+Unfurl the "🏗️ Under the Hood" dropdowns at the bottom of the dashboard to read detailed summaries on the specific math (like Sentinel-2 MSI metrics) powering the app.
+
+</td>
+</tr>
+</table>
+
+---
