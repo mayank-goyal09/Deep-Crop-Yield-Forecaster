@@ -15,7 +15,8 @@
 
 <br/>
 
-[![🚀 Live Demo](https://img.shields.io/badge/🚀_LIVE_DEMO-Crop_Yield_Forecaster-2ecc71?style=for-the-badge&labelColor=0c1445)](#)
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_LIVE_DEMO-Crop_Yield_Forecaster-2ecc71?style=for-the-badge&labelColor=0c1445)](https://deep-crop-yield-forecaster-project.streamlit.app/)
+[![📓 Google Colab](https://img.shields.io/badge/📓_GOOGLE_COLAB-Training_Pipeline-f9ab00?style=for-the-badge&labelColor=3c4043)](https://colab.research.google.com/drive/1Lwbg2jTgeWxBWDbtEuIExMHm-hxu0CaO?usp=sharing)
 [![GitHub Stars](https://img.shields.io/github/stars/mayank-goyal09/Deep-Crop-Yield-Forecaster?style=for-the-badge&color=ffd700)](https://github.com/mayank-goyal09/Deep-Crop-Yield-Forecaster/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/mayank-goyal09/Deep-Crop-Yield-Forecaster?style=for-the-badge&color=87ceeb)](https://github.com/mayank-goyal09/Deep-Crop-Yield-Forecaster/network)
 
