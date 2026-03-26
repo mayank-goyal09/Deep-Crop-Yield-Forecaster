@@ -1,9 +1,11 @@
 streamlit>=1.30.0
 pandas
 numpy<2.0.0
-tensorflow==2.15.0
+tensorflow-cpu
 folium
 streamlit-folium
 plotly
 scipy
 matplotlib
+
+
