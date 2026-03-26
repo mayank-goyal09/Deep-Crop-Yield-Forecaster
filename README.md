@@ -95,3 +95,65 @@ The final result is a production-ready **Streamlit dashboard** that provides rea
 
 ---
 
+## 🔬 **HOW THE GEOSPATIAL LSTM WORKS**
+
+```mermaid
+graph LR
+    A[🛰️ Sentinel-2 & CHIRPS] -. GEE API .-> B[📥 Data Extraction]
+    B --> C[🌿 Calculate NDVI]
+    C --> D[🔄 4-Week Time-Series Tensors]
+    D --> E[🧠 Stacked LSTM Network]
+    E --> F[🌾 Yield Prediction MT/Ha]
+    F --> G[📊 Streamlit Dashboard & Heatmaps]
+    
+    style A fill:#2ecc71,color:#fff
+    style E fill:#3498db,color:#fff
+    style G fill:#00f2fe,color:#000
+```
+
+### **The Pipeline Breakdown:**
+
+<table>
+<tr>
+<td>
+
+#### 🛰️ **1. Cloud-Based Extraction**
+Fetch historical and real-time imagery using the **Google Earth Engine**:
+- **Sentinel-2 MSI Level-2A** at 10m resolution (cloud-masked).
+- **CHIRPS Precipitation** for robust environmental stress variables.
+- Outputs are combined by location boundaries (ROI).
+
+</td>
+<td>
+
+#### 🔄 **2. Sequence Engineering**
+Reshape complex time-series data into 3D Tensors:
+- **Input Features**: NDVI + Rainfall
+- **Time Steps**: 4-week sliding window representing cumulative crop growth.
+- Normalization and preparation for Recurrent networks.
+
+</td>
+</tr>
+<tr>
+<td>
+
+#### 🧠 **3. Stacked LSTM Framework**
+Deep learning neural network built to handle sequences:
+- Two sequential **LSTM layers** that "remember" previous growth states.
+- Followed by Dense layers for regression output (Yield in MT/Ha).
+- Attained highly accurate **0.05 Validation Loss**.
+
+</td>
+<td>
+
+#### 📊 **4. Real-time Inference & UI**
+A production-ready interface that includes:
+- Monte Carlo Dropout (Input Perturbation) to simulate a **95% Confidence Interval**.
+- **Folium Interactive Maps** overlapping NDVI heatmaps.
+- **Plotly Drill-Down Trends** linking rainfall directly to yield variations.
+
+</td>
+</tr>
+</table>
+
+---
